@@ -80,6 +80,8 @@
        --regular-margin: 10px;
        --font-default: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
        --director-margin: 15px 20px 0 0;
+       --column-gap: 2%;
+       --column-min-width: 280px;
 	--fit-style: contain;
 	--fadein-speed: 0;
 	--video-margin: 0px;
@@ -997,14 +999,12 @@ body.darktheme .credits>a:visited {
 	background: #BF3F3F !important;
 }
 #mainmenu.row {
-	text-align: center;
-	margin-top: 20px;
-	padding: 0 10px;
-}
-#mainmenu.row:after {
-	content: "";
-	display: table;
-	clear: both;
+       display: grid;
+       grid-template-columns: repeat(auto-fit, minmax(var(--column-min-width), 1fr));
+       gap: var(--column-gap);
+       text-align: center;
+       margin-top: 20px;
+       padding: 0 10px;
 }
 
 hr {
@@ -1692,8 +1692,7 @@ body {
         padding: 0 0px;
         height: 100%;
         width: 100%;
-	background-color: var(--background-color);
-	font-family: Helvetica, Arial, sans-serif;
+       background-color: var(--background-color);
 	border: 0;
 	margin: 0;
 	opacity: 1;
@@ -2527,17 +2526,19 @@ label {
 } */
 
 .column {
-	display: inline-block;
-	margin: 1.8%;
-	min-width: 300px;
-	width: 20%;
-	padding: 25px;
-	height: 200px;
-	text-align: center;
-	font-size: 100%;
-	transition: all 0.2s ease-in-out;
-	border-radius: 12px;
-	border: 1px solid rgba(0, 0, 0, 0.08);
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       justify-content: space-between;
+       margin: var(--column-gap);
+       min-width: var(--column-min-width);
+       padding: 25px;
+       height: 200px;
+       text-align: center;
+       font-size: 100%;
+       transition: all 0.2s ease-in-out;
+       border-radius: 12px;
+       border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .column:hover {
@@ -2577,13 +2578,14 @@ span[data-action-type="stats-graphs-details-container"]>span{
 }
 
 #empty-container {
-	display: inline-block;
-	width: 20%;
-	min-width: 300px;
-	padding: 28px;
-	height: 200px;
-	margin: 1.8%;
-	text-align: center;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       min-width: var(--column-min-width);
+       padding: 28px;
+       height: 200px;
+       margin: var(--column-gap);
+       text-align: center;
 }
 #container-1 {
 	background-repeat: no-repeat;
