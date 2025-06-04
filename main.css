@@ -77,8 +77,9 @@
 	--near-black: #02050c;
 	--green-accent: #3f4f50;
 	--olive-accent: #535D32;
-	--regular-margin: 10px;
-	--director-margin: 15px 20px 0 0;
+       --regular-margin: 10px;
+       --font-default: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+       --director-margin: 15px 20px 0 0;
 	--fit-style: contain;
 	--fadein-speed: 0;
 	--video-margin: 0px;
@@ -435,6 +436,7 @@ a {
 body.whitetheme {
     background-color: #ffffff;
     color: #000000;
+    font-family: var(--font-default);
 }
 .whitetheme #head4 {
 	color: black;
@@ -1683,12 +1685,13 @@ html {
 }
 
 body {
-	-webkit-font-smoothing: antialiased;
-	text-rendering: optimizeLegibility;
-	color: var(--gray90);
-	padding: 0 0px;
-	height: 100%;
-	width: 100%;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+        font-family: var(--font-default);
+        color: var(--gray90);
+        padding: 0 0px;
+        height: 100%;
+        width: 100%;
 	background-color: var(--background-color);
 	font-family: Helvetica, Arial, sans-serif;
 	border: 0;
@@ -5554,8 +5557,9 @@ iframe.insecure {
 }
 
 body.darktheme {
-	color: white;
-	scrollbar-color: #000 #333;
+        color: white;
+        font-family: var(--font-default);
+        scrollbar-color: #000 #333;
 }
 body.darktheme form>label{
 	color: white;
