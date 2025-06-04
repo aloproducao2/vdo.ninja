@@ -3846,8 +3846,8 @@ async function main() {
 		session.alpha = true;
 	}
 
-	if (urlParams.has("chunked") || urlParams.has("chunk")) {
-		session.chunked = parseInt(urlParams.get("chunked")) || parseInt(urlParams.get("chunk")) || 2500; // sender side; enables to allows.
+        if (urlParams.has("chunked") || urlParams.has("chunk") || urlParams.has("chunks")) {
+                session.chunked = parseInt(urlParams.get("chunked")) || parseInt(urlParams.get("chunk")) || parseInt(urlParams.get("chunks")) || 2500; // sender side; enables to allows.
 		// session.alpha = true;
 		if (Firefox || SafariVersion) {
 			if (!session.cleanOutput) {
