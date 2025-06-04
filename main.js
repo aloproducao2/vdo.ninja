@@ -3848,15 +3848,17 @@ async function main() {
 
         if (urlParams.has("chunked") || urlParams.has("chunk") || urlParams.has("chunks")) {
                 session.chunked = parseInt(urlParams.get("chunked")) || parseInt(urlParams.get("chunk")) || parseInt(urlParams.get("chunks")) || 2500; // sender side; enables to allows.
-		// session.alpha = true;
-		if (Firefox || SafariVersion) {
-			if (!session.cleanOutput) {
-				warnUser("Only Chromium-based browsers support chunked mode.\n\nPlease switch to Chrome or another compatible browser to use &chunked mode.");
-			}
-			session.chunked = false;
-			console.warn("Disabling chunked mode since not using a compatible browser.");
-		}
-	}
+                // session.alpha = true;
+                if (Firefox || SafariVersion) {
+                        if (!session.cleanOutput) {
+                                warnUser("Only Chromium-based browsers support chunked mode.\n\nPlease switch to Chrome or another compatible browser to use &chunked mode.");
+                        }
+                        session.chunked = false;
+                        console.warn("Disabling chunked mode since not using a compatible browser.");
+                } else if (!urlParams.has("audiobuffer") && !urlParams.has("bufferaudio") && typeof session.audioBuffer === "undefined") {
+                        session.audioBuffer = 200; // avoid audio crackle when chunked
+                }
+        }
 	if (urlParams.has("chunkedbuffer") || urlParams.has("sendingbuffer")) {
 		session.sendingBuffer = parseInt(urlParams.get("chunkedbuffer")) || parseInt(urlParams.get("sendingbuffer")) || 5000; // sender side; enables to allows.
 	}
